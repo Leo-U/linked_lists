@@ -45,13 +45,8 @@ class LinkedList
 
   def to_s
     string = ''
-    p @list.length
     @list.each_with_index do |el, i|
-      if i == 0
-        string = "( #{el.value} )"
-      else
-        string += " -> ( #{el.value} )"
-      end
+      i == 0 ? string = "( #{el.value} )" : string += " -> ( #{el.value} )"
     end
     string = string + " -> nil"
   end
