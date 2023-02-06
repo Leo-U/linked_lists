@@ -63,6 +63,18 @@ class LinkedList
     string = string + " -> nil" if string != ''
   end
 
+  def insert_at(value, index)
+    last_node = @list[index - 1]
+    node = Node.new(value)
+    node.next_node = @list[index + 1]
+    @list.insert(index, node)
+    last_node.next_node = node
+  end
+
+  def remove_at(index)
+    
+  end
+
 end
 
 class Node
@@ -79,7 +91,7 @@ newList.append(3)
 newList.append('q')
 newList.prepend(33)
 newList.append('z')
-newList.pop
+newList.insert_at('ff', 1)
 
 def test_next_node(newList)
   newList.list.each do |el|
@@ -93,7 +105,7 @@ def test_next_node(newList)
   end
 end
 
-# test_next_node(newList)
+test_next_node(newList)
 p newList.to_s
 
-p newList.find('waffle')
+# p newList.find('waffle')
