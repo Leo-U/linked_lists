@@ -67,11 +67,7 @@ class LinkedList
     node = Node.new(value)
     node.next_node = @list[index]
     @list.insert(index, node)
-    if index - 1 >= 0 && index <= @list.length
-      last_node.next_node = node 
-    else
-      raise "Index out of bounds"
-    end
+    last_node.next_node = node if @list.length > 1 && index - 1 >= 0
   end
 
   def remove_at(index)
@@ -92,13 +88,12 @@ class Node
 end
 
 newList = LinkedList.new()
-newList.insert_at('ddd',-1)
-newList.insert_at('q', -1)
-# newList.append(3)
-# newList.append('q')
-# newList.prepend(33)
-# newList.append('z')
-# newList.insert_at('ff', 0)
+newList.append(33)
+newList.append(7)
+newList.append('z')
+newList.append('q')
+
+newList.insert_at('ff', 1)
 
 
 def test_next_node(newList)
@@ -108,6 +103,3 @@ def test_next_node(newList)
     puts ''
   end
 end
-
-test_next_node(newList)
-p newList.to_s
