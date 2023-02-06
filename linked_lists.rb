@@ -2,7 +2,6 @@ class LinkedList
   attr_reader :list
   def initialize
     @list = []
-    @head = nil
   end
 
   def append(value)
@@ -105,5 +104,3 @@ end
 
 test_next_node(newList)
 p newList.to_s
-# p newList.at(1)
-# p newList.list[1].next_node
