@@ -67,7 +67,7 @@ class LinkedList
     node = Node.new(value)
     node.next_node = @list[index]
     @list.insert(index, node)
-    last_node.next_node = node
+    last_node.next_node = node if index - 1 >= 0
   end
 
   def remove_at(index)
@@ -93,6 +93,7 @@ newList.append('q')
 newList.prepend(33)
 newList.append('z')
 newList.insert_at('ff', 0)
+
 
 def test_next_node(newList)
   newList.list.each do |el|
