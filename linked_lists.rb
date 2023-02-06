@@ -35,6 +35,7 @@ class LinkedList
   end
 
   def pop
+
   end
 
   def contains?(value)
@@ -67,9 +68,17 @@ newList.append(3)
 newList.append('q')
 newList.prepend(33)
 
-# newList.list.each do |el|
-#   p el
-#   p ''
-# end
+def test_next_node(newList)
+  newList.list.each do |el|
+    puts "value: #{el.value}"
+    if el.next_node
+      puts "next node: #{el.next_node.value}"
+    else
+      puts "next node: nil"
+    end
+    puts ''
+  end
+end
 
+test_next_node(newList)
 p newList.to_s
