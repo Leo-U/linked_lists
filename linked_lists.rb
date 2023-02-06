@@ -66,13 +66,15 @@ class LinkedList
   def insert_at(value, index)
     last_node = @list[index - 1]
     node = Node.new(value)
-    node.next_node = @list[index + 1]
+    node.next_node = @list[index]
     @list.insert(index, node)
     last_node.next_node = node
   end
 
   def remove_at(index)
-    
+    last_node = @list[index - 1]
+    last_node.next_node = @list[index + 1]
+    @list.delete_at(index)
   end
 
 end
@@ -91,21 +93,17 @@ newList.append(3)
 newList.append('q')
 newList.prepend(33)
 newList.append('z')
-newList.insert_at('ff', 1)
+newList.insert_at('ff', 0)
 
 def test_next_node(newList)
   newList.list.each do |el|
     puts "value: #{el.value}"
-    if el.next_node
-      puts "next node: #{el.next_node.value}"
-    else
-      puts "next node: nil"
-    end
+    puts el.next_node ? "next node: #{el.next_node.value}" : "next node: nil"
     puts ''
   end
 end
 
 test_next_node(newList)
 p newList.to_s
-
-# p newList.find('waffle')
+# p newList.at(1)
+# p newList.list[1].next_node
