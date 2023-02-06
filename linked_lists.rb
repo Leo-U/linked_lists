@@ -35,13 +35,24 @@ class LinkedList
   end
 
   def pop
-
+    @list[-2].next_node = nil if @list[-2] != nil
+    pop_me = @list[-1]
+    @list -= [pop_me]
+    pop_me
   end
 
   def contains?(value)
+    @list.each do |el|
+      return true if el.value == value
+    end
+    false
   end
 
   def find(value)
+    @list.each_with_index do |el, i|
+      return i if el.value == value
+    end
+    nil
   end
 
   def to_s
@@ -49,7 +60,7 @@ class LinkedList
     @list.each_with_index do |el, i|
       i == 0 ? string = "( #{el.value} )" : string += " -> ( #{el.value} )"
     end
-    string = string + " -> nil"
+    string = string + " -> nil" if string != ''
   end
 
 end
@@ -67,6 +78,8 @@ newList = LinkedList.new()
 newList.append(3)
 newList.append('q')
 newList.prepend(33)
+newList.append('z')
+newList.pop
 
 def test_next_node(newList)
   newList.list.each do |el|
@@ -80,5 +93,7 @@ def test_next_node(newList)
   end
 end
 
-test_next_node(newList)
+# test_next_node(newList)
 p newList.to_s
+
+p newList.find('waffle')
