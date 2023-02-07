@@ -33,7 +33,7 @@ class LinkedList
     if @list[index] != nil
       @list[index]
     else
-      raise "Specified index is out of bounds (too large)."
+      raise "Specified index is out of bounds"
     end
   end
 
@@ -97,7 +97,7 @@ newList.append(7)
 newList.append('z')
 newList.append('q')
 
-p newList.at(4)
+p newList.at(-5)
 
 def test_next_node(newList)
   newList.list.each do |el|
