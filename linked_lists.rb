@@ -1,5 +1,6 @@
 class LinkedList
   attr_reader :list
+
   def initialize
     @list = []
   end
@@ -7,7 +8,7 @@ class LinkedList
   def append(value)
     node = Node.new(value)
     last_node = @list[-1]
-    last_node.next_node = node if !@list.empty?
+    last_node.next_node = node unless @list.empty?
     @list << node
   end
 
@@ -30,15 +31,15 @@ class LinkedList
   end
 
   def at(index)
-    if @list[index] != nil
+    if !@list[index].nil?
       @list[index]
     else
-      raise "Specified index is out of bounds"
+      raise 'Specified index is out of bounds'
     end
   end
 
   def pop
-    @list[-2].next_node = nil if @list[-2] != nil
+    @list[-2].next_node = nil unless @list[-2].nil?
     pop_me = @list[-1]
     @list -= [pop_me]
     pop_me
@@ -63,7 +64,7 @@ class LinkedList
     @list.each_with_index do |el, i|
       i == 0 ? string = "( #{el.value} )" : string += " -> ( #{el.value} )"
     end
-    string = string + " -> nil" if string != ''
+    string += ' -> nil' if string != ''
   end
 
   def insert_at(value, index)
@@ -74,20 +75,19 @@ class LinkedList
       @list.insert(index, node)
       last_node.next_node = node if @list.length > 1 && index - 1 >= 0
     else
-      raise "Specified index is out of bounds"
+      raise 'Specified index is out of bounds'
     end
   end
 
   def remove_at(index)
-    if @list[index] != nil
+    if !@list[index].nil?
       last_node = @list[index - 1]
       last_node.next_node = @list[index + 1]
       @list.delete_at(index)
     else
-      raise "Specified index is out of bounds"
+      raise 'Specified index is out of bounds'
     end
   end
-
 end
 
 class Node
@@ -99,18 +99,18 @@ class Node
   end
 end
 
-newList = LinkedList.new()
+newList = LinkedList.new
 newList.append(33)
 newList.append(7)
 newList.append('z')
 newList.append('q')
 
-newList.insert_at("foo", 5)
+newList.insert_at('foo', 5)
 
 def test_next_node(newList)
   newList.list.each do |el|
     puts "value: #{el.value}"
-    puts el.next_node ? "next node: #{el.next_node.value}" : "next node: nil"
+    puts el.next_node ? "next node: #{el.next_node.value}" : 'next node: nil'
     puts ''
   end
 end
