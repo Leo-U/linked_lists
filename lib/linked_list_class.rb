@@ -89,30 +89,3 @@ class LinkedList
     end
   end
 end
-
-class Node
-  attr_accessor :value, :next_node
-
-  def initialize(value = nil, next_node = nil)
-    @value = value
-    @next_node = next_node
-  end
-end
-
-newList = LinkedList.new
-newList.append(33)
-newList.append(7)
-newList.append('z')
-newList.append('q')
-
-newList.insert_at('foo', 5)
-
-def test_next_node(newList)
-  newList.list.each do |el|
-    puts "value: #{el.value}"
-    puts el.next_node ? "next node: #{el.next_node.value}" : 'next node: nil'
-    puts ''
-  end
-end
-
-test_next_node(newList)
