@@ -67,17 +67,25 @@ class LinkedList
   end
 
   def insert_at(value, index)
-    last_node = @list[index - 1]
-    node = Node.new(value)
-    node.next_node = @list[index]
-    @list.insert(index, node)
-    last_node.next_node = node if @list.length > 1 && index - 1 >= 0
+    if index >= 0 && index <= @list.size
+      last_node = @list[index - 1]
+      node = Node.new(value)
+      node.next_node = @list[index]
+      @list.insert(index, node)
+      last_node.next_node = node if @list.length > 1 && index - 1 >= 0
+    else
+      raise "Specified index is out of bounds"
+    end
   end
 
   def remove_at(index)
-    last_node = @list[index - 1]
-    last_node.next_node = @list[index + 1]
-    @list.delete_at(index)
+    if @list[index] != nil
+      last_node = @list[index - 1]
+      last_node.next_node = @list[index + 1]
+      @list.delete_at(index)
+    else
+      raise "Specified index is out of bounds"
+    end
   end
 
 end
@@ -97,7 +105,7 @@ newList.append(7)
 newList.append('z')
 newList.append('q')
 
-p newList.at(-5)
+newList.insert_at("foo", 5)
 
 def test_next_node(newList)
   newList.list.each do |el|
