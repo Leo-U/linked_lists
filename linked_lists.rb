@@ -30,7 +30,11 @@ class LinkedList
   end
 
   def at(index)
-    @list[index]
+    if @list[index] != nil
+      @list[index]
+    else
+      raise "Specified index is out of bounds (too large)."
+    end
   end
 
   def pop
@@ -93,8 +97,7 @@ newList.append(7)
 newList.append('z')
 newList.append('q')
 
-newList.insert_at('ff', 1)
-
+p newList.at(4)
 
 def test_next_node(newList)
   newList.list.each do |el|
@@ -103,3 +106,5 @@ def test_next_node(newList)
     puts ''
   end
 end
+
+test_next_node(newList)
